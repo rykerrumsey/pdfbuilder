@@ -1,0 +1,13 @@
+{
+  "name": "pdfbuilder",
+  "version": "0.1.0",
+  "description": "Web application that helps build PDF's from HTML.",
+  "main": "index.js",
+  "repository": "git@github.com:rykerrumsey/pdfbuilder.git",
+  "author": "Ryker Rumsey",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "puppeteer": "^0.13.0"
+  }
+}
