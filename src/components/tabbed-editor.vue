@@ -44,21 +44,22 @@ export default {
     float: left;
     width: 50%;
     height: 100%;
-    background-color: black;
+    background-color: #002B36;
     text-align: left;
 
     .tabs {
       position: relative;
       width: 100%;
       height: 30px;
-      background-color: black;
+      background-color: #111;
       border: none;
+      padding-bottom: 1px;
 
       .tab {
         display: flex;
         flex-direction: row;
         align-items: center;
-        background-color: blue;
+        background-color: #073642;
         height: 100%;
         padding-left: 20px;
         padding-right: 20px;
@@ -69,9 +70,10 @@ export default {
       }
 
       .tab.active {
-        border-top: 2px solid black;
-        border-left: 2px solid black;
-        border-right: 2px solid black;
+        background-color: #002B36;
+        border-top: 2px solid #111;
+        border-left: 2px solid #111;
+        border-right: 2px solid #111;
       }
     }
   }

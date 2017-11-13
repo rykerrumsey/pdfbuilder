@@ -15,7 +15,7 @@ export default {
   data () {
     return {
       options: {
-        fontSize: '16pt',
+        fontSize: '14pt',
       }
     }
   },

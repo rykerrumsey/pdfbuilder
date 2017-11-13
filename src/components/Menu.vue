@@ -8,8 +8,12 @@
         <span>version 0.1.0</span>
       </div>
       <div class="actions">
-        <button>Render</button>
-        <button>Save</button>
+        <div class="button">
+          render
+        </div>
+        <div class="button">
+          export
+        </div>
       </div>
     </div>
   </div>
@@ -22,6 +26,9 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  sockets: {
+    
   }
 }
 </script>
@@ -33,7 +40,7 @@ export default {
     left: 0;
     width: 100%;
     height: 50px;
-    background-color: black;
+    background-color: #002B36;
 
     .container {
       display: flex;
@@ -52,7 +59,25 @@ export default {
       }
 
       .actions {
-        
+        height: 70%;
+
+        .button {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          background-color: #073642;
+          height: 100%;
+          padding-left: 20px;
+          padding-right: 20px;
+          float: left;
+          font-size: 1em;
+          color: #E0E2E4;
+          text-transform: uppercase;
+
+          &:first-child {
+            margin-right: 10px;
+          }
+        }
       }
 
       & > * {

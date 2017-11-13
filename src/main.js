@@ -3,12 +3,19 @@ import App from './App.vue'
 
 //import plugins
 import AxiosPlugin from './plugins/axios/axios'
-import AcePlugin from './plugins/ace/index'
+import VueSocketio from 'vue-socket.io';
 
-Vue.use(AcePlugin)
 Vue.use(AxiosPlugin)
+Vue.use(VueSocketio, 'http://localhost:2024')
 
 new Vue({
   el: '#app',
-  render: h => h(App)
+  render: function(h) {
+    return h(App)
+  },
+  sockets: {
+    connect_me: function(arg) {
+      console.log(arg)
+    }
+  }
 })
