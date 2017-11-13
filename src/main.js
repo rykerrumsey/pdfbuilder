@@ -3,10 +3,9 @@ import App from './App.vue'
 
 //import plugins
 import AxiosPlugin from './plugins/axios/axios'
-import AcePlugin from './plugins/ace/ace'
+import AcePlugin from './plugins/ace/index'
 
-console.log(AcePlugin)
-
+Vue.use(AcePlugin)
 Vue.use(AxiosPlugin)
 
 new Vue({

@@ -1,24 +1,31 @@
 <template>
   <div id="app">
     <topMenu></topMenu>
-    <editor></editor>
+    <tabbedEditor></tabbedEditor>
   </div>
 </template>
 
 <script>
 import topMenu from './components/Menu.vue'
-import editor from './components/Editor.vue'
+import tabbedEditor from './components/tabbed-editor.vue'
 
 export default {
   name: 'app',
-  data () {
+  data() {
     return {
       content: ''
     }
   },
   components: {
     topMenu,
-    editor
+    tabbedEditor
+  },
+  methods: {
+    changeContent(val) {
+      if (this.contentA !== val) {
+      	this.contentA = val
+      }
+    }
   }
 }
 </script>

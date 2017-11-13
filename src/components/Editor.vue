@@ -1,41 +1,34 @@
 <template>
-  <div id="editor">
-    <edit v-model="content" @init="editorInit();" lang="html" theme="solarized_dark" width="100%" height="500"></edit>
-  </div>
+  <editor :id="editorId" :content="content" :lang="this.lang" :theme="this.theme" :height="'700px'" :options="options"></editor>
 </template>
 
 <script>
-
+import editor from 'vue2-ace'
+import 'brace/mode/html'
+import 'brace/mode/css'
+import 'brace/mode/javascript'
+import 'brace/theme/solarized_dark'
 
 export default {
-  name: 'editor',
+  name: 'Editor',
+  props: ['editorId', 'content', 'lang', 'theme'],
   data () {
     return {
-      content: ''
+      options: {
+        fontSize: '16pt',
+      }
     }
   },
   components: {
-    edit: require('vue2-ace-editor'),
+    editor
   },
-  methods: {
-    editorInit: function () {
-      require('brace/mode/html')
-      require('brace/mode/javascript')
-      require('brace/mode/less')
-      require('brace/theme/solarized_dark')
-    }
+  mounted() {
+    var vm = this;
+    //vm.$on('editor-update', vm.function);
   }
 }
 </script>
 
 <style lang="scss">
-  #editor {
-    position: relative;
-    float: left;
-    width: 50%;
-    height: 100%;
-    background-color: black;
-    text-align: left;
 
-  }
 </style>
