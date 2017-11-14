@@ -3,6 +3,7 @@
     <topMenu></topMenu>
     <tabbedEditor></tabbedEditor>
     <viewer></viewer>
+    <status></status>
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 import topMenu from './components/Menu.vue'
 import tabbedEditor from './components/tabbed-editor.vue'
 import viewer from './components/Viewer.vue'
+import status from './components/Status.vue'
 
 export default {
   name: 'app',
@@ -21,7 +23,8 @@ export default {
   components: {
     topMenu,
     tabbedEditor,
-    viewer
+    viewer,
+    status
   }
 }
 </script>

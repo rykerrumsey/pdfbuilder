@@ -19,5 +19,16 @@ console.log("Server running at: localhost:" + port)
 let io = require('socket.io').listen(app.listen(port))
 
 io.sockets.on("connection", (socket) => {
-  socket.emit("connect_me", "arrgggh")
+
+  socket.on("renderpdf", (document) => {
+    //do all the puppeteer stuff Here
+    //generate a pdf
+    fs.readFile(__dirname + '/pdf-sample.pdf', (err, buf) => {
+      if(err) {
+        console.log("Error loading pdf file from server.")
+      } else {
+        socket.emit('generatepdf', { buffer: buf.toString('base64') })
+      }
+    })
+  })
 })

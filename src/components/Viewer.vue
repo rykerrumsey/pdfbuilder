@@ -1,6 +1,10 @@
 <template>
   <div id="viewer">
-    <embed src="http://www.pdf995.com/samples/pdf.pdf" width="100%" height="730px" type='application/pdf'>
+    <div v-if="hasRendered" class="none">
+      No PDF has been rendered.
+    </div>
+    <object v-else :data="pdf" type="application/pdf" width="100%" height="730px"></object>
+
   </div>
 </template>
 
@@ -9,12 +13,21 @@ export default {
   name: 'viewer',
   data () {
     return {
-
+      pdf: ''
+    }
+  },
+  computed: {
+    hasRendered: function() {
+      if(this.pdf === '')
+        return true
+      else {
+        return false
+      }
     }
   },
   sockets: {
-    connect_me: function() {
-
+    generatepdf: function(pdf) {
+      this.pdf = `data:application/pdf;base64,${pdf.buffer}`
     }
   }
 }
@@ -22,8 +35,21 @@ export default {
 
 <style lang="scss">
   #viewer {
+    box-sizing: border-box;
     float: left;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     width: 50%;
-    height: 100%;
+    height: 730px;
+    background-color: #002B36;
+    color: #E0E2E4;
+    font-size: 3em;
+    border: 2px solid #111;
+
+    .none {
+
+    }
   }
 </style>

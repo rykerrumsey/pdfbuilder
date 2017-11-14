@@ -8,7 +8,7 @@
         <span>version 0.1.0</span>
       </div>
       <div class="actions">
-        <div class="button">
+        <div @click="renderpdf" class="button">
           render
         </div>
         <div class="button">
@@ -24,11 +24,12 @@ export default {
   name: 'menu',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
     }
   },
-  sockets: {
-    
+  methods: {
+    renderpdf: function() {
+      this.$socket.emit('renderpdf');
+    }
   }
 }
 </script>
@@ -41,6 +42,7 @@ export default {
     width: 100%;
     height: 50px;
     background-color: #002B36;
+    z-index: 4;
 
     .container {
       display: flex;
@@ -73,6 +75,7 @@ export default {
           font-size: 1em;
           color: #E0E2E4;
           text-transform: uppercase;
+          cursor: pointer;
 
           &:first-child {
             margin-right: 10px;

@@ -12,10 +12,5 @@ new Vue({
   el: '#app',
   render: function(h) {
     return h(App)
-  },
-  sockets: {
-    connect_me: function(arg) {
-      console.log(arg)
-    }
   }
 })

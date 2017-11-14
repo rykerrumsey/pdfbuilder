@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "delivery": "^0.0.6",
     "socket.io": "^2.0.4",
+    "socket.io-stream": "^0.9.1",
     "vue": "^2.4.4",
     "vue-socket.io": "^2.1.1-a",
     "vue2-ace": "^1.0.6"
