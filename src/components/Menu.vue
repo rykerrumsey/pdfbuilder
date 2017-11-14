@@ -28,7 +28,12 @@ export default {
   },
   methods: {
     renderpdf: function() {
-      this.$socket.emit('renderpdf');
+      let html = {
+        css: ".title {font-size: 50px;}",
+        html: "<div class='title'> BOOOYAAAA!! </div>"
+      }
+
+      this.$socket.emit('renderpdf', html);
     }
   }
 }
