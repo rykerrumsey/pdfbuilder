@@ -24,7 +24,17 @@ export default {
   },
   mounted() {
     var vm = this;
-    //vm.$on('editor-update', vm.function);
+    vm.$on('editor-update', this.update);
+  },
+  methods: {
+    update: function(editorText) {
+      let data = {
+        lang: this.lang,
+        text: editorText
+      }
+
+      this.$emit('update-content', data)
+    }
   }
 }
 </script>

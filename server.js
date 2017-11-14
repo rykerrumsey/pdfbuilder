@@ -27,12 +27,16 @@ io.sockets.on("connection", (socket) => {
       const htmltemplate = fs.readFileSync('./templates/index.mst').toString()
       const html = mustache.render(htmltemplate, {css: document.css, html: document.html})
 
-      const browser = await puppeteer.launch();
-      const page = await browser.newPage();
-      await page.setContent(html);
+      const browser = await puppeteer.launch()
+      const page = await browser.newPage()
+
+      await page.setViewport({isLandscape: true, width: 2200, height: 1700, deviceScaleFactor: 2})
+      await page.setContent(html)
+      //await page.emulateMedia('screen');
       await page.pdf({
         path: 'temp.pdf',
         format: 'Letter',
+        printBackground: true,
         landscape: true,
         margin: {
           top: "20px",
@@ -40,8 +44,8 @@ io.sockets.on("connection", (socket) => {
           left: "20px",
           right: "20px"
         }
-      });
-      await browser.close();
+      })
+      await browser.close()
 
       await fs.readFile(__dirname + '/temp.pdf', (err, buf) => {
         if(err) {

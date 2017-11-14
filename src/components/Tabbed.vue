@@ -1,5 +1,5 @@
 <template>
-<div id="editor">
+<div id="tabbed">
   <div class="tabs">
     <div @click="changeEditor('html')" :class="['tab', currentWindow === 'html' ? activeClass : '']">
       <span>html</span>
@@ -8,8 +8,8 @@
       <span>css</span>
     </div>
   </div>
-  <Editor v-show="currentWindow === 'html'" id="html" :content="html" lang="html" theme="solarized_dark"></Editor>
-  <Editor v-show="currentWindow === 'css'" id="css" :content="css" lang="css" theme="solarized_dark"></Editor>
+  <Editor v-show="currentWindow === 'html'" v-on:update-content="update" id="html" :content="this.content.html" lang="html" theme="solarized_dark"></Editor>
+  <Editor v-show="currentWindow === 'css'" v-on:update-content="update" id="css" :content="this.content.css" lang="css" theme="solarized_dark"></Editor>
 </div>
 </template>
 
@@ -17,13 +17,11 @@
 import Editor from './Editor.vue'
 
 export default {
-  name: 'tabbed-editor',
+  name: 'tabbed',
   props: ['content'],
   data () {
     return {
       currentWindow: 'html',
-      html: '',
-      css: '',
       activeClass: 'active'
     }
   },
@@ -33,13 +31,22 @@ export default {
   methods: {
     changeEditor: function(language) {
       this.currentWindow = language
+    },
+    update: function(data) {
+      if(data.lang === 'html') {
+        this.$emit('update-html', data.text)
+      } else if (data.lang === 'css') {
+        this.$emit('update-css', data.text)
+      } else {
+        console.log("Editor returned an unknown language: " + data.lang)
+      }
     }
   }
 }
 </script>
 
 <style lang="scss">
-  #editor {
+  #tabbed {
     position: relative;
     float: left;
     width: 50%;
@@ -67,6 +74,7 @@ export default {
         font-size: 1em;
         color: white;
         text-transform: uppercase;
+        cursor: pointer;
       }
 
       .tab.active {

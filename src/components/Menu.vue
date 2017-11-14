@@ -8,10 +8,10 @@
         <span>version 0.1.0</span>
       </div>
       <div class="actions">
-        <div @click="renderpdf" class="button">
+        <div @click="renderPdf" class="button">
           render
         </div>
-        <div class="button">
+        <div @click="exportTemplate" class="button">
           export
         </div>
       </div>
@@ -22,18 +22,17 @@
 <script>
 export default {
   name: 'menu',
+  props: ['content'],
   data () {
     return {
     }
   },
   methods: {
-    renderpdf: function() {
-      let html = {
-        css: ".title {font-size: 50px;}",
-        html: "<div class='title'> BOOOYAAAA!! </div>"
-      }
-
-      this.$socket.emit('renderpdf', html);
+    renderPdf: function() {
+      this.$socket.emit('renderpdf', this.content)
+    },
+    exportTemplate: function() {
+      this.$socket.emit('exportTemplate', this.content)
     }
   }
 }

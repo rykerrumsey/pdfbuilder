@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <topMenu></topMenu>
-    <tabbedEditor></tabbedEditor>
+    <topMenu :content="content"></topMenu>
+    <tabbed v-on:update-css="updateCSS" v-on:update-html="updateHTML" :content="content"></tabbed>
     <viewer></viewer>
     <status></status>
   </div>
@@ -9,7 +9,7 @@
 
 <script>
 import topMenu from './components/Menu.vue'
-import tabbedEditor from './components/tabbed-editor.vue'
+import tabbed from './components/Tabbed.vue'
 import viewer from './components/Viewer.vue'
 import status from './components/Status.vue'
 
@@ -17,14 +17,25 @@ export default {
   name: 'app',
   data() {
     return {
-      content: ''
+      content: {
+        html: '',
+        css: ''
+      }
     }
   },
   components: {
     topMenu,
-    tabbedEditor,
+    tabbed,
     viewer,
     status
+  },
+  methods: {
+    updateHTML: function(html) {
+      this.content.html = html
+    },
+    updateCSS: function(css) {
+      this.content.css = css
+    }
   }
 }
 </script>
