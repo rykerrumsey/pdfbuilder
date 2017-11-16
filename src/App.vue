@@ -23,6 +23,9 @@ export default {
       }
     }
   },
+  created: function() {
+    this.$socket.emit('startup')
+  },
   components: {
     topMenu,
     tabbed,
@@ -35,6 +38,12 @@ export default {
     },
     updateCSS: function(css) {
       this.content.css = css
+    }
+  },
+  sockets: {
+    loadfiles: function(data) {
+      this.updateHTML(data.html)
+      this.updateCSS(data.css)
     }
   }
 }

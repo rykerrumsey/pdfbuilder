@@ -22,8 +22,34 @@ let io = require('socket.io').listen(app.listen(port))
 
 io.sockets.on("connection", (socket) => {
 
+  socket.on("startup", () => {
+    let content = {
+      html: fs.readFileSync('./templates/main.html').toString(),
+      css: fs.readFileSync('./templates/main.css').toString()
+    }
+
+    socket.emit("loadfiles", content)
+  })
+
   socket.on("renderpdf", (document) => {
     (async () => {
+      //save file to filesystem
+      await fs.writeFile('./templates/main.html', document.html, (err) => {
+        if(!err) {
+          console.log("HTML file successfully saved.")
+        } else {
+          console.log("There was an error saving the HTML file.")
+        }
+      })
+
+      await fs.writeFile('./templates/main.css', document.css, (err) => {
+        if(!err) {
+          console.log("CSS file successfully saved.")
+        } else {
+          console.log("There was an error saving the CSS file.")
+        }
+      })
+
       const htmltemplate = fs.readFileSync('./templates/index.mst').toString()
       const html = mustache.render(htmltemplate, {css: document.css, html: document.html})
 

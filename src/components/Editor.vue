@@ -1,5 +1,5 @@
 <template>
-  <editor :id="editorId" :content="content" :lang="this.lang" :theme="this.theme" :height="'700px'" :options="options"></editor>
+  <editor :id="editorId" :content="content" :lang="this.lang" :theme="this.theme" :height="'700px'" :sync="true" :options="options"></editor>
 </template>
 
 <script>
@@ -27,6 +27,9 @@ export default {
     vm.$on('editor-update', this.update);
   },
   methods: {
+    start: function() {
+      console.log(this.content)
+    },
     update: function(editorText) {
       let data = {
         lang: this.lang,
