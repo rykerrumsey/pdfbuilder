@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style type="text/css">
+      html * {
+  box-sizing: border-box;
+  font-size: 14px; }
+
+body {
+  width: calc(100%-40px);
+  height: 760px; }
+
+.container {
+  display: grid;
+  grid-template-rows: repeat(40, 1fr);
+  grid-template-columns: repeat(50, 1fr);
+  width: 100%;
+  height: 100%; }
+
+.info {
+  grid-column-start: 1;
+  grid-column-end: 8;
+  grid-row-start: 1;
+  grid-row-end: 35;
+  position: relative;
+  margin: 2px;
+  border: 1px solid #111; }
+  .info .logo {
+    width: 100%;
+    height: 200px;
+    font-family: &#39;Roboto&#39;, sans-serif;
+    background-color: blue; }
+  .info .section {
+    height: 50px;
+    border-bottom: 1px solid #111;
+    padding: 5px; }
+    .info .section .title {
+      font-size: 12px;
+      text-transform: uppercase; }
+
+.vininfo {
+  grid-column-start: 8;
+  grid-column-end: 51;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  margin: 2px;
+  border: 1px solid #111; }
+
+.topmatrix {
+  background-color: teal;
+  grid-column-start: 8;
+  grid-column-end: 43;
+  grid-row-start: 3;
+  grid-row-end: 20; }
+
+.bottommatrix {
+  background-color: purple;
+  grid-column-start: 8;
+  grid-column-end: 43;
+  grid-row-start: 20;
+  grid-row-end: 30; }
+
+.codes {
+  background-color: blue;
+  grid-column-start: 1;
+  grid-column-end: 8;
+  grid-row-start: 35;
+  grid-row-end: 41; }
+
+.notes {
+  background-color: pink;
+  grid-column-start: 8;
+  grid-column-end: 24;
+  grid-row-start: 30;
+  grid-row-end: 41; }
+
+.rni {
+  background-color: green;
+  grid-column-start: 34;
+  grid-column-end: 43;
+  grid-row-start: 30;
+  grid-row-end: 41; }
+
+.heatmap {
+  background-color: yellow;
+  background-color: yellow;
+  grid-column-start: 24;
+  grid-column-end: 34;
+  grid-row-start: 30;
+  grid-row-end: 41; }
+
+.matrixtotal {
+  background-color: cyan;
+  grid-column-start: 43;
+  grid-column-end: 51;
+  grid-row-start: 3;
+  grid-row-end: 33; }
+
+.totals {
+  background-color: orange;
+  grid-column-start: 43;
+  grid-column-end: 51;
+  grid-row-start: 33;
+  grid-row-end: 41; }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+   <div class="info">
+       <div class="logo">Logo goes here</div>
+       <div class="section">
+           <div class="title">last name:</div>
+       </div>
+       <div class="section">
+           <div class="title">first name:</div>
+       </div>
+       <div class="section">
+           <div class="title">date:</div>
+       </div>
+       <div class="section">
+           <div class="title">phone:</div>
+       </div>
+       <div class="section">
+           <div class="title">insurance co:</div>
+       </div>
+       <div class="section">
+           <div class="title">estimator:</div>
+       </div>
+       <div class="section">
+           <div class="title">claim #:</div>
+       </div>
+   </div>
+   <div class="vininfo">
+       vininfo
+   </div>
+   <div class="topmatrix">
+       matrix
+   </div>
+   <div class="bottommatrix">
+       bottom matrix
+   </div>
+   <div class="codes">
+       codes
+   </div>
+   <div class="notes">
+       notes
+   </div>
+   <div class="heatmap">
+       heatmap
+   </div>
+   <div class="rni">
+       rni
+   </div>
+   <div class="matrixtotal">
+       totals matrix
+   </div>
+   <div class="totals">
+       total totals
+   </div>
+</div>
+
+  </body>
+</html>

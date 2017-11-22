@@ -1,4 +1,425 @@
-<div class="container">
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500|Work+Sans:400,500" rel="stylesheet">
+    <style type="text/css">
+      html * {
+  box-sizing: border-box;
+  font-family: Roboto;
+  font-size: 14px; }
+
+body {
+  width: calc(100%-40px);
+  height: 760px; }
+
+.container {
+  display: grid;
+  grid-template-rows: repeat(40, 1fr);
+  grid-template-columns: repeat(50, 1fr);
+  width: 100%;
+  height: 100%; }
+
+.center {
+  text-align: center; }
+
+.border {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #555; }
+
+.blackout {
+  background-color: #dedede; }
+
+.title-overlay {
+  position: absolute;
+  font-family: Work Sans;
+  font-weight: 500;
+  left: 0;
+  top: 0;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-left: 5px;
+  font-size: 16px; }
+
+.logo {
+  grid-column-start: 1;
+  grid-column-end: 7;
+  grid-row-start: 1;
+  grid-row-end: 13;
+  position: relative;
+  padding: 2px; }
+  .logo .logo-img {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 15px; }
+    .logo .logo-img img {
+      width: 100%;
+      height: 100%; }
+  .logo .heading {
+    font-size: 10px;
+    margin-top: 15px;
+    padding: 2px;
+    text-align: center;
+    font-family: Work Sans;
+    font-weight: 500; }
+  .logo .market {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    font-family: Work Sans;
+    font-weight: 500; }
+    .logo .market .label {
+      display: inline-block;
+      font-size: 10px;
+      margin-right: 5px; }
+    .logo .market .market-img {
+      display: inline-block;
+      width: 25px; }
+
+.info {
+  grid-column-start: 1;
+  grid-column-end: 7;
+  grid-row-start: 13;
+  grid-row-end: 35;
+  position: relative;
+  padding: 2px; }
+  .info .infoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #ddd;
+    width: 100%;
+    height: 100%; }
+    .info .infoContainer .section {
+      background-color: #fff;
+      height: 50px;
+      border: 1px solid #555;
+      padding: 5px;
+      width: 85%; }
+      .info .infoContainer .section .title {
+        font-family: Work Sans;
+        font-weight: 500;
+        font-size: 10px;
+        text-transform: uppercase; }
+      .info .infoContainer .section .text {
+        font-size: 14px;
+        width: 100%;
+        text-align: center;
+        margin-top: 4px; }
+
+.vininfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  grid-column-start: 7;
+  grid-column-end: 51;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  margin: 2px;
+  background-color: #ddd; }
+  .vininfo .vin {
+    float: left; }
+  .vininfo .label {
+    float: left;
+    margin-right: 5px;
+    margin-left: 10px;
+    text-transform: uppercase;
+    color: #333;
+    font-family: Work Sans;
+    font-weight: 500; }
+    .vininfo .label .spacer {
+      width: 90px; }
+    .vininfo .label .modelspacer {
+      width: 100px; }
+    .vininfo .label .yearspacer {
+      width: 80px; }
+  .vininfo .bold {
+    color: #111;
+    font-weight: 500;
+    width: 20px; }
+  .vininfo .box {
+    float: left;
+    margin: 2px;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #555;
+    background-color: #fff;
+    text-align: center;
+    vertical-align: middle; }
+
+.topmatrix {
+  grid-column-start: 7;
+  grid-column-end: 43;
+  grid-row-start: 3;
+  grid-row-end: 23;
+  padding: 2px;
+  width: 100%; }
+  .topmatrix table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    text-transform: uppercase; }
+    .topmatrix table thead tr {
+      height: 39px; }
+      .topmatrix table thead tr th {
+        border: 1px solid #555;
+        font-size: 11px;
+        width: 55px;
+        font-family: Work Sans;
+        font-weight: 500; }
+        .topmatrix table thead tr th .parts {
+          width: 40px; }
+      .topmatrix table thead tr th .sizes {
+        font-size: 12px;
+        text-align: center;
+        width: 30px; }
+    .topmatrix table tbody tr {
+      height: 21px; }
+      .topmatrix table tbody tr td {
+        font-size: 12px;
+        border: 1px solid #555;
+        padding: 2px;
+        text-align: center;
+        width: 55px; }
+      .topmatrix table tbody tr .sizes {
+        font-size: 12px;
+        text-align: center;
+        font-weight: 500;
+        width: 30px; }
+
+.bottommatrix {
+  grid-column-start: 7;
+  grid-column-end: 43;
+  grid-row-start: 23;
+  grid-row-end: 30;
+  padding: 2px;
+  width: 100%; }
+  .bottommatrix table {
+    table-layout: fixed;
+    width: 100%;
+    border: 1px solid #555;
+    border-collapse: collapse;
+    text-transform: uppercase; }
+    .bottommatrix table thead tr {
+      height: 39px; }
+      .bottommatrix table thead tr th {
+        border: 1px solid #555;
+        font-size: 11px;
+        font-family: Work Sans;
+        font-weight: 500;
+        width: 55px; }
+        .bottommatrix table thead tr th .parts {
+          width: auto; }
+    .bottommatrix table tbody tr {
+      height: 21px; }
+      .bottommatrix table tbody tr td {
+        font-size: 12px;
+        border: 1px solid #555;
+        padding: 2px;
+        text-align: center; }
+      .bottommatrix table tbody tr .sizes {
+        font-size: 12px;
+        text-align: center;
+        font-weight: 500;
+        width: 6.66%; }
+
+.codes {
+  grid-column-start: 1;
+  grid-column-end: 7;
+  grid-row-start: 35;
+  grid-row-end: 41;
+  padding: 2px; }
+  .codes .codescontainer {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #555; }
+    .codes .codescontainer .heading {
+      margin: 0;
+      font-size: 11px;
+      text-align: center;
+      padding: 5px;
+      padding-bottom: 0;
+      text-transform: uppercase;
+      font-family: Work Sans;
+      font-weight: 500; }
+    .codes .codescontainer ul {
+      list-style: none;
+      margin: 0;
+      padding: 0; }
+      .codes .codescontainer ul li {
+        margin: 6px;
+        font-size: 9px; }
+        .codes .codescontainer ul li b {
+          font-weight: 500;
+          font-size: 9px; }
+
+.notes {
+  grid-column-start: 7;
+  grid-column-end: 24;
+  grid-row-start: 29;
+  grid-row-end: 41;
+  padding: 2px;
+  margin-top: 14px; }
+  .notes .notescontainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #555; }
+    .notes .notescontainer .existingnotes ul {
+      margin: 0px;
+      padding: 20px; }
+      .notes .notescontainer .existingnotes ul li {
+        margin-top: 3px;
+        margin-left: 1px;
+        font-size: 11px; }
+
+.rni {
+  grid-column-start: 33;
+  grid-column-end: 43;
+  grid-row-start: 29;
+  grid-row-end: 41;
+  padding: 2px;
+  margin-top: 14px; }
+  .rni .rnicontainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #555; }
+    .rni .rnicontainer .rnicar {
+      width: 85%;
+      margin: 0 auto;
+      margin-top: 25px;
+      opacity: 0.9; }
+    .rni .rnicontainer .rnitotal {
+      width: 85%;
+      margin: 0 auto;
+      margin-top: 6px; }
+      .rni .rnicontainer .rnitotal table {
+        border-collapse: collapse;
+        width: 100%; }
+      .rni .rnicontainer .rnitotal tr {
+        height: 25px; }
+      .rni .rnicontainer .rnitotal .center {
+        text-align: center; }
+      .rni .rnicontainer .rnitotal td {
+        font-weight: bold;
+        padding-left: 5px;
+        font-family: Work Sans;
+        font-weight: 500;
+        border: 1px solid #555;
+        font-size: 14px;
+        width: 100%; }
+
+.damage {
+  grid-column-start: 24;
+  grid-column-end: 33;
+  grid-row-start: 29;
+  grid-row-end: 41;
+  padding: 2px;
+  margin-top: 14px; }
+  .damage .damagecontainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #555; }
+    .damage .damagecontainer .damagecar {
+      width: 70%;
+      margin: 0 auto;
+      margin-top: 20px; }
+
+.matrixtotal {
+  grid-column-start: 43;
+  grid-column-end: 51;
+  grid-row-start: 3;
+  grid-row-end: 32;
+  padding: 2px;
+  width: 100%; }
+  .matrixtotal table {
+    width: 100%;
+    border: 1px solid #555;
+    border-collapse: collapse; }
+    .matrixtotal table thead tr {
+      height: 39px; }
+      .matrixtotal table thead tr th {
+        border: 1px solid #555;
+        font-size: 9px;
+        font-family: Work Sans;
+        font-weight: 500;
+        width: 33.3%; }
+  .matrixtotal tbody tr {
+    height: 21px; }
+    .matrixtotal tbody tr td {
+      font-size: 12px;
+      border: 1px solid #555;
+      padding-left: 4px;
+      text-align: left; }
+    .matrixtotal tbody tr .total {
+      font-size: 12px;
+      text-align: center;
+      font-weight: 500; }
+  .matrixtotal tbody tr.spacer {
+    height: 65px; }
+  .matrixtotal tbody tr.pdrtotal {
+    margin-top: 5px;
+    height: 30px; }
+    .matrixtotal tbody tr.pdrtotal td {
+      font-weight: bold;
+      font-size: 14px;
+      font-family: Work Sans;
+      font-weight: 500; }
+
+.totals {
+  grid-column-start: 43;
+  grid-column-end: 51;
+  grid-row-start: 31;
+  grid-row-end: 41;
+  margin-top: 5px;
+  padding: 2px;
+  padding-right: 1px;
+  width: 100%; }
+  .totals .totalcontainer {
+    height: 100%; }
+    .totals .totalcontainer .label {
+      text-align: right;
+      font-weight: bold;
+      background-color: #ddd;
+      width: 60%;
+      padding-right: 5px;
+      font-family: Work Sans;
+      font-weight: 500; }
+    .totals .totalcontainer .final {
+      font-size: 18px;
+      text-align: right; }
+    .totals .totalcontainer .thick {
+      border: 2px solid #555;
+      font-size: 17px;
+      width: 40%;
+      font-family: Work Sans;
+      font-weight: 500;
+      padding-left: 5px; }
+    .totals .totalcontainer .totals {
+      border: 1px solid #555;
+      width: 40%;
+      padding-left: 5px;
+      font-family: Work Sans;
+      font-weight: 500; }
+      .totals .totalcontainer .totals:last-child {
+        width: 50%; }
+    .totals .totalcontainer table {
+      border-collapse: collapse;
+      width: 100%;
+      height: 100%; }
+      .totals .totalcontainer table tbody tr {
+        height: 20%; }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
     <div class="logo">
         <div class="border">
        <div class="logo-img">
@@ -21,59 +442,24 @@
        <div class="infoContainer">
        <div class="section">
            <div class="title">last name:</div>
-           {{#unless blank}}
-               <div class="text">
-                   {{customer.lastname}}
-               </div>
-            {{/unless}}
        </div>
        <div class="section">
            <div class="title">first name:</div>
-            {{#unless blank}}
-               <div class="text">
-                   {{customer.firstname}}
-               </div>
-            {{/unless}}
        </div>
        <div class="section">
            <div class="title">date:</div>
-            {{#unless blank}}
-               <div class="text">
-                   {{customer.date}}
-               </div>
-            {{/unless}}
        </div>
        <div class="section">
            <div class="title">phone:</div>
-            {{#unless blank}}
-               <div class="text">
-                   {{customer.phone}}
-               </div>
-            {{/unless}}
        </div>
        <div class="section">
            <div class="title">insurance co:</div>
-            {{#unless blank}}
-               <div class="text">
-                   {{customer.insuranceco}}
-               </div>
-            {{/unless}}
        </div>
        <div class="section">
            <div class="title">claim #:</div>
-           {{#unless blank}}
-               <div class="text">
-                   {{customer.claimnumber}}
-               </div>
-            {{/unless}}
        </div>
        <div class="section">
            <div class="title">estimator:</div>
-           {{#unless blank}}
-               <div class="text">
-                   {{customer.estimator}}
-               </div>
-            {{/unless}}
        </div>
        </div>
    </div>
@@ -82,31 +468,35 @@
            VIN:
        </div>
         <div class="vin">
-          {{#if blank}}
-                {{#each vehicle.character}}
                 <div class="box"></div>
-              {{/each}}
-          {{else}}
-            {{#each vehicle.character}}
-                <div class="box">{{this}}</div>
-              {{/each}}
-          {{/if}}
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
         </div>
         <div class="label">
-           YEAR: {{#if blank}}<div class="yearspacer"></div>{{else}}<span class="bold">{{vehicle.year}}</span>{{/if}}
+           YEAR: <div class="yearspacer"></div>
        </div>
        <div class="label">
-           MAKE: {{#if blank}}<div class="modelspacer"></div>{{else}}<span class="bold">{{vehicle.make}}</span>{{/if}}
+           MAKE: <div class="modelspacer"></div>
        </div>
        <div class="label">
-           MODEL: {{#if blank}}<div class="modelspacer"></div>{{else}}<span class="bold">{{vehicle.model}}</span>{{/if}}
+           MODEL: <div class="modelspacer"></div>
        </div>
        <div class="label">
-        {{#if metric}}
-            MILES: {{#if blank}}<div class="spacer"></div>{{else}}<span class="bold">{{vehicle.mileage}}</span>{{/if}}
-        {{else}}
-            KM'S: {{#if blank}}<div class="spacer"></div>{{else}}<span class="bold">{{vehicle.mileage}}</span>{{/if}}
-        {{/if}}
+            KM'S: <div class="spacer"></div>
        </div>
     </div>
    <div class="topmatrix">
@@ -136,23 +526,231 @@
                       <td class="sizes">qtr</td>
                       <td class="sizes">toonie</td>
                 </tr>
-                {{#each matrix.parts}}
                     <tr>
-                      <td>{{matrix_parts}}</td>
-                      <td>{{vlight_dime}}</td>
-                      <td>{{vlight_qtr}}</td>
-                      <td>{{vlight_toonie}}</td>
-                      <td>{{light_dime}}</td>
-                      <td>{{light_qtr}}</td>
-                      <td>{{light_toonie}}</td>
-                      <td>{{mod_dime}}</td>
-                      <td>{{mod_qtr}}</td>
-                      <td>{{mod_toonie}}</td>
-                      <td>{{med_dime}}</td>
-                      <td>{{med_qtr}}</td>
-                      <td>{{med_toonie}}</td>
+                      <td>hood</td>
+                      <td>130</td>
+                      <td>180</td>
+                      <td>210</td>
+                      <td>195</td>
+                      <td>245</td>
+                      <td>310</td>
+                      <td>260</td>
+                      <td>310</td>
+                      <td>405</td>
+                      <td>405</td>
+                      <td>505</td>
+                      <td>600</td>
                     </tr>
-                {{/each}}
+                    <tr>
+                      <td>roof</td>
+                      <td>145</td>
+                      <td>195</td>
+                      <td>260</td>
+                      <td>245</td>
+                      <td>295</td>
+                      <td>325</td>
+                      <td>340</td>
+                      <td>425</td>
+                      <td>490</td>
+                      <td>470</td>
+                      <td>620</td>
+                      <td>685</td>
+                    </tr>
+                    <tr>
+                      <td>deck lid</td>
+                      <td>105</td>
+                      <td>145</td>
+                      <td>180</td>
+                      <td>160</td>
+                      <td>245</td>
+                      <td>275</td>
+                      <td>225</td>
+                      <td>310</td>
+                      <td>340</td>
+                      <td>345</td>
+                      <td>440</td>
+                      <td>505</td>
+                    </tr>
+                    <tr>
+                      <td>l quarter</td>
+                      <td>105</td>
+                      <td>145</td>
+                      <td>180</td>
+                      <td>160</td>
+                      <td>210</td>
+                      <td>245</td>
+                      <td>245</td>
+                      <td>310</td>
+                      <td>ASK</td>
+                      <td>290</td>
+                      <td>375</td>
+                      <td>ASK</td>
+                    </tr>
+                    <tr>
+                      <td>l roof rail</td>
+                      <td>105</td>
+                      <td>145</td>
+                      <td>ASK</td>
+                      <td>160</td>
+                      <td>210</td>
+                      <td>ASK</td>
+                      <td>245</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                    </tr>
+                    <tr>
+                      <td>lr door</td>
+                      <td>90</td>
+                      <td>130</td>
+                      <td>165</td>
+                      <td>145</td>
+                      <td>195</td>
+                      <td>230</td>
+                      <td>230</td>
+                      <td>295</td>
+                      <td>ASK</td>
+                      <td>275</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                    </tr>
+                    <tr>
+                      <td>lf door</td>
+                      <td>90</td>
+                      <td>130</td>
+                      <td>165</td>
+                      <td>145</td>
+                      <td>195</td>
+                      <td>230</td>
+                      <td>230</td>
+                      <td>295</td>
+                      <td>ASK</td>
+                      <td>275</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                    </tr>
+                    <tr>
+                      <td>l fender</td>
+                      <td>105</td>
+                      <td>145</td>
+                      <td>180</td>
+                      <td>160</td>
+                      <td>210</td>
+                      <td>245</td>
+                      <td>245</td>
+                      <td>310</td>
+                      <td>ASK</td>
+                      <td>290</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                    </tr>
+                    <tr>
+                      <td>r fender</td>
+                      <td>105</td>
+                      <td>145</td>
+                      <td>180</td>
+                      <td>160</td>
+                      <td>210</td>
+                      <td>245</td>
+                      <td>245</td>
+                      <td>310</td>
+                      <td>ASK</td>
+                      <td>290</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                    </tr>
+                    <tr>
+                      <td>rf door</td>
+                      <td>90</td>
+                      <td>130</td>
+                      <td>165</td>
+                      <td>145</td>
+                      <td>195</td>
+                      <td>230</td>
+                      <td>230</td>
+                      <td>295</td>
+                      <td>ASK</td>
+                      <td>275</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                    </tr>
+                    <tr>
+                      <td>rr door</td>
+                      <td>90</td>
+                      <td>130</td>
+                      <td>165</td>
+                      <td>145</td>
+                      <td>195</td>
+                      <td>230</td>
+                      <td>230</td>
+                      <td>295</td>
+                      <td>ASK</td>
+                      <td>275</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                    </tr>
+                    <tr>
+                      <td>r roof rail</td>
+                      <td>105</td>
+                      <td>145</td>
+                      <td>ASK</td>
+                      <td>160</td>
+                      <td>210</td>
+                      <td>ASK</td>
+                      <td>245</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                    </tr>
+                    <tr>
+                      <td>r quarter</td>
+                      <td>105</td>
+                      <td>145</td>
+                      <td>180</td>
+                      <td>160</td>
+                      <td>210</td>
+                      <td>245</td>
+                      <td>245</td>
+                      <td>310</td>
+                      <td>ASK</td>
+                      <td>290</td>
+                      <td>375</td>
+                      <td>ASK</td>
+                    </tr>
+                    <tr>
+                      <td>sunroof</td>
+                      <td>90</td>
+                      <td>130</td>
+                      <td>165</td>
+                      <td>145</td>
+                      <td>195</td>
+                      <td>230</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                    </tr>
+                    <tr>
+                      <td>cowl</td>
+                      <td>90</td>
+                      <td>130</td>
+                      <td>165</td>
+                      <td>145</td>
+                      <td>195</td>
+                      <td>230</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                    </tr>
               </tbody>
        </table>
    </div>
@@ -183,23 +781,51 @@
                       <td class="sizes">qtr</td>
                       <td class="sizes">toonie</td>
                 </tr>
-                {{#each matrix.bottomparts}}
                     <tr>
-                      <td>{{matrix_parts}}</td>
-                      <td>{{heavy_dime}}</td>
-                      <td>{{heavy_qtr}}</td>
-                      <td>{{heavy_toonie}}</td>
-                      <td>{{severe_dime}}</td>
-                      <td>{{severe_qtr}}</td>
-                      <td>{{severe_toonie}}</td>
-                      <td>{{extreme_dime}}</td>
-                      <td>{{extreme_qtr}}</td>
-                      <td>{{extreme_toonie}}</td>
-                      <td>{{limit_dime}}</td>
-                      <td>{{limit_qtr}}</td>
-                      <td>{{limit_toonie}}</td>
+                      <td>hood</td>
+                      <td>490</td>
+                      <td>570</td>
+                      <td>700</td>
+                      <td>585</td>
+                      <td>765</td>
+                      <td>895</td>
+                      <td>735</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                      <td>865</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
                     </tr>
-                {{/each}}
+                    <tr>
+                      <td>roof</td>
+                      <td>570</td>
+                      <td>750</td>
+                      <td>845</td>
+                      <td>635</td>
+                      <td>845</td>
+                      <td>1105</td>
+                      <td>790</td>
+                      <td>1060</td>
+                      <td>1365</td>
+                      <td>945</td>
+                      <td>1270</td>
+                      <td>1625</td>
+                    </tr>
+                    <tr>
+                      <td>deck lid</td>
+                      <td>505</td>
+                      <td>605</td>
+                      <td>ASK</td>
+                      <td>585</td>
+                      <td>765</td>
+                      <td>ASK</td>
+                      <td>700</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                      <td>ASK</td>
+                    </tr>
               </tbody>
        </table>
    </div>
@@ -269,45 +895,101 @@
                   <td class="blackout"></td>
                   <td class="total">TOTAL</td>
                 </tr>
-                {{#if blank}}
-                    {{#each matrix.parts}}
                         <tr>
                           <td></td>
                           <td></td>
                           <td>$</td>
                         </tr>
-                    {{/each}}
-                {{else}}
-                    {{#each matrix.parts}}
                         <tr>
-                          <td style="text-align: center;">{{addon}}</td>
-                          <td style="text-align: center;">{{od}}</td>
-                          <td style="text-align: center;">$ {{price}}</td>
+                          <td></td>
+                          <td></td>
+                          <td>$</td>
                         </tr>
-                    {{/each}}
-                {{/if}}
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td>$</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td>$</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td>$</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td>$</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td>$</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td>$</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td>$</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td>$</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td>$</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td>$</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td>$</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td>$</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td>$</td>
+                        </tr>
                 <tr class="spacer">
                     <td class="blackout"></td>
                     <td class="blackout"></td>
                     <td class="blackout"></td>
                 </tr>
-                {{#if blank}}
-                    {{#each matrix.bottomparts}}
                         <tr>
                           <td></td>
                           <td></td>
                           <td>$</td>
                         </tr>
-                    {{/each}}
-                {{else}}
-                    {{#each matrix.bottomparts}}
                         <tr>
-                          <td style="text-align: center;">{{addon}}</td>
-                          <td style="text-align: center;">{{od}}</td>
-                          <td style="text-align: center;">$ {{price}}</td>
+                          <td></td>
+                          <td></td>
+                          <td>$</td>
                         </tr>
-                    {{/each}}
-                {{/if}}
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td>$</td>
+                        </tr>
                 <tr class="pdrtotal">
                     <td style="text-transform: uppercase; text-align: right; padding-right: 6px;" colspan="2">pdr total</td>
                     <td style="padding-left: 5px; text-align: left;">$</td>
@@ -342,3 +1024,6 @@
        </div>
    </div>
 </div>
+
+  </body>
+</html>

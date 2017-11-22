@@ -1,5 +1,5 @@
 <template>
-  <editor :id="editorId" :content="content" :lang="this.lang" :theme="this.theme" :height="'700px'" :sync="true" :options="options"></editor>
+  <editor :id="editorId" :content="editorContent" :lang="this.lang" :theme="this.theme" :height="'700px'" :sync="true" :options="options"></editor>
 </template>
 
 <script>
@@ -14,22 +14,24 @@ export default {
   props: ['editorId', 'content', 'lang', 'theme'],
   data () {
     return {
+      editorContent: this.content,
       options: {
         fontSize: '14pt',
+        useWorker: false
       }
     }
   },
   components: {
     editor
   },
+  created() {
+
+  },
   mounted() {
     var vm = this;
     vm.$on('editor-update', this.update);
   },
   methods: {
-    start: function() {
-      console.log(this.content)
-    },
     update: function(editorText) {
       let data = {
         lang: this.lang,
@@ -37,6 +39,15 @@ export default {
       }
 
       this.$emit('update-content', data)
+    }
+  },
+  sockets: {
+    loadfiles: function(data) {
+      if(this.lang === 'html') {
+        this.editorContent = data.html
+      } else if(this.lang === 'css') {
+        this.editorContent = data.css
+      }
     }
   }
 }
