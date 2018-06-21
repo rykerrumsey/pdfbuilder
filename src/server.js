@@ -2,7 +2,7 @@ const express = require('express')
 const path = require('path')
 const fs = require('fs')
 const puppeteer = require('puppeteer')
-const mustache = require('mustache')
+const handlebars = require('handlebars')
 
 let app = express()
 
@@ -57,7 +57,8 @@ io.sockets.on("connection", (socket) => {
       const page = await browser.newPage()
 
       await page.setViewport({isLandscape: true, width: 2200, height: 1700, deviceScaleFactor: 2})
-      await page.setContent(html)
+      await page.goto(`data:text/html,${html}`, {"waitUntil" : "networkidle0"})
+      //await page.setContent(html)
       //await page.emulateMedia('screen');
       await page.pdf({
         path: 'temp.pdf',
