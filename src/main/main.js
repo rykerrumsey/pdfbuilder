@@ -10,7 +10,18 @@ const isDevelopment = process.env.NODE_ENV !== 'production'
 let mainWindow
 
 function createMainWindow() {
-  const window = new BrowserWindow({ useContentSize: true })
+  const window = new BrowserWindow({
+    title: "pdfbuilder v0.2.0",
+    useContentSize: true,
+    autoHideMenuBar: true,
+    webPreferences: {
+      plugins: true,
+      webSecurity: false
+    }
+  })
+
+  // maximize window on start
+  window.maximize()
 
   if (isDevelopment) {
     window.webContents.openDevTools()

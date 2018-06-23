@@ -2,12 +2,13 @@ import './styles.scss'
 
 import * as monaco from 'monaco-editor';
 
-function menu() {
-  let menu = document.createElement("DIV")
-  menu.setAttribute("id", "menu")
+import menu from './menu.js'
+import editor from './editor.js'
+import viewer from './viewer.js'
 
-  return menu;
-}
-// monaco.editor.create(document.getElementById('app'), {
-// 	language: 'html'
-// });
+let app = document.getElementById('app')
+app.append(menu(), editor(), viewer())
+
+monaco.editor.create(document.getElementById('monaco-editor'), {
+	language: 'html'
+});
