@@ -93,7 +93,7 @@ body {
       float: left;
       font-size: 1em;
       letter-spacing: 2px;
-      color: white;
+      color: #93a1a1;
       border-bottom: 2px solid #111;
       text-transform: uppercase;
       cursor: pointer;
@@ -105,13 +105,26 @@ body {
       border-left: 2px solid #111;
       border-right: 2px solid #111;
       border-bottom: 0;
+      color: #eee8d5;
     }
   }
 
   #monaco-editor {
+    position: relative;
     grid-row: 2;
     box-sizing: border-box;
     border-left: 2px solid #111;
+    width: 100%;
+    height: 100%;
+
+    .individual {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 

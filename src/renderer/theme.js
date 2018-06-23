@@ -1,3 +1,11 @@
+export let options = {
+  minimap: {
+    enabled: false
+  },
+	language: 'text/html',
+  theme: 'solarized'
+}
+
 export let solarized = {
   base: 'hc-black',
 	inherit: false,

@@ -1,5 +1,5 @@
 import './styles.scss'
-import { solarized } from './theme'
+import { solarized, options } from './theme'
 
 import * as monaco from 'monaco-editor';
 
@@ -12,10 +12,8 @@ app.append(menu(), editor(), viewer())
 
 monaco.editor.defineTheme('solarized', solarized)
 
-monaco.editor.create(document.getElementById('monaco-editor'), {
-  minimap: {
-    enabled: false
-  },
-	language: 'text/html',
-  theme: 'solarized'
-});
+monaco.editor.create(document.getElementById('html'), options)
+
+monaco.editor.create(document.getElementById('scss'), options)
+
+monaco.editor.create(document.getElementById('json'), options)
