@@ -6,11 +6,14 @@
 
 ``` bash
 # install dependencies
-npm install
+yarn install
 
-# serve with hot reload at localhost:8080
-npm run dev
+# serve application with hot reload
+yarn dev
 
 # build for production with minification
-npm run build
+yarn dist
 ```
+## TODO list
+
+* finish implementing editor color theme
