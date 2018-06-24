@@ -1,14 +1,15 @@
-import './styles.scss'
-import { solarized, options } from './theme'
+import './css/styles.scss'
 
 import * as monaco from 'monaco-editor';
 
-import menu from './menu.js'
-import editor from './editor.js'
-import viewer from './viewer.js'
+import menu from './js/menu'
+import editor from './js/editor'
+import viewer from './js/viewer'
+import { modal } from './js/modal'
+import { solarized, options } from './js/theme'
 
 let app = document.getElementById('app')
-app.append(menu(), editor(), viewer())
+app.append(menu(), editor(), viewer(), modal())
 
 monaco.editor.defineTheme('solarized', solarized)
 
