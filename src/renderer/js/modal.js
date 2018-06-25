@@ -41,7 +41,7 @@ function baseModal(title) {
   modal.classList.add("modal")
 
   let close = document.createElement("DIV")
-  close.classList.add("close")
+  close.classList.add("close", "close-thin")
   close.onclick = closeModal
 
   let heading = document.createElement("DIV")

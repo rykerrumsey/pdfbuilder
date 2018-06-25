@@ -2,7 +2,6 @@ export let options = {
   minimap: {
     enabled: false
   },
-	language: 'text/html',
   theme: 'solarized'
 }
 

@@ -1,20 +1,23 @@
 import './css/styles.scss'
 
-import * as monaco from 'monaco-editor';
+import Store from 'electron-store'
+import { createProxyForMainProcessModule } from 'electron-remote'
+
+// get the paths for saving and configuring templates
+const app = require('electron').remote.app
+let documentPath = app.getPath("documents")
+let storePath = app.getPath("userData")
 
 import menu from './js/menu'
-import editor from './js/editor'
+import Editor from './js/Editor'
 import viewer from './js/viewer'
 import { modal } from './js/modal'
-import { solarized, options } from './js/theme'
 
-let app = document.getElementById('app')
-app.append(menu(), editor(), viewer(), modal())
+const store = new Store()
 
-monaco.editor.defineTheme('solarized', solarized)
+let body = document.getElementById('app')
+body.append(menu(), viewer(), modal())
 
-monaco.editor.create(document.getElementById('html'), options)
+let editor = new Editor(store, storePath, documentPath)
 
-monaco.editor.create(document.getElementById('scss'), options)
-
-monaco.editor.create(document.getElementById('json'), options)
+// editor.create("jesus")
