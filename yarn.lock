@@ -7328,6 +7328,12 @@ sass-loader@^7.0.3:
     neo-async "^2.5.0"
     pify "^3.0.0"
 
+sass@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.7.1.tgz#09d4a3fab8b42db3aad1a31dcaf3e24a54b838a7"
+  dependencies:
+    chokidar "^2.0.0"
+
 sax@^1.2.4, sax@~1.2.1, sax@~1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"

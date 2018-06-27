@@ -34,8 +34,8 @@ Editor.prototype.save = function() {
   this.autosave()
   this._buildDir()
   this.editors.forEach((editor) => {
-    let savePath = path.join(this.documentPath, `/pdfbuilder/${this.name}/${this.name}.${editor}`)
-
+    let savePath = path.join(this.documentPath, `/${this.name}/${this.name}.${editor}`)
+    console.log(savePath)
     fs.writeFile(savePath, this[`${editor}Editor`].getValue(), (err) => {
       if (err) throw err;
       console.log('The file has been saved!');
@@ -66,6 +66,7 @@ Editor.prototype._init = function() {
   document.getElementById('app').append(this._build())
 
   this.name = this.store.get('name')
+  this._buildDir()
   //this._setSeedStore()
 
   monaco.editor.defineTheme('solarized', solarized)
@@ -140,12 +141,11 @@ Editor.prototype._setEditor = function(event) {
 }
 
 Editor.prototype._buildDir = function() {
-  let appPath = path.join(this.documentPath, '/pdfbuilder')
-  let templatePath = path.join(this.documentPath, `/pdfbuilder/${this.name}`)
+  let templatePath = path.join(this.documentPath, `${this.name}`)
 
   // create directory for template if they don't exist
   try {
-    fs.mkdirSync(appPath)
+    fs.mkdirSync(this.documentPath)
   } catch (err) {
     if (err.code !== 'EEXIST') throw err
   }
