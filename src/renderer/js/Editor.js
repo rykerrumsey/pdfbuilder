@@ -140,7 +140,6 @@ Editor.prototype._setEditor = function(event) {
 }
 
 Editor.prototype._buildDir = function() {
-  console.log("THIS IS IN BUILDDIR " + this.name)
   let appPath = path.join(this.documentPath, '/pdfbuilder')
   let templatePath = path.join(this.documentPath, `/pdfbuilder/${this.name}`)
 
