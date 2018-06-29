@@ -2,10 +2,12 @@ export function create() {
   let createModal = baseModal("create new")
   let content = createModal.querySelector(".content")
 
-  let message = document.createElement("H1")
-  message.textContent = "Here is the content."
+  let createBtn = document.createElement("DIV")
+  createBtn.setAttribute("id", "create-button")
+  createBtn.classList.add("action-button")
+  createBtn.textContent = "Load"
 
-  content.append(message)
+  content.append(createBtn)
 
   return createModal
 }
@@ -14,10 +16,12 @@ export function load() {
   let loadModal = baseModal("load")
   let content = loadModal.querySelector(".content")
 
-  let message = document.createElement("H1")
-  message.textContent = "Here is the content."
+  let loadBtn = document.createElement("DIV")
+  loadBtn.setAttribute("id", "load-button")
+  loadBtn.classList.add("action-button")
+  loadBtn.textContent = "Load"
 
-  content.append(message)
+  content.append(loadBtn)
 
   return loadModal
 }

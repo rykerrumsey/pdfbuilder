@@ -1,19 +1,26 @@
 import * as monaco from 'monaco-editor'
 import { solarized, options } from './theme'
 
-export default function Editor(data) {
-  this.data = data
+export default function Editor(store) {
+  this.files = Object.keys(store.get("data"))
+  this.store = store
 
-  console.log(this.data)
   this._init()
 }
 
 Editor.prototype.save = function() {
   // save each editor into store
+  for(const file of this.files) {
+    let editor = this[`${file}Editor`].getValue()
+    this.store.set(`data.${file}`, editor)
+  }
 }
 
 Editor.prototype.update = function() {
   // update editors from store
+  for (const file of this.files) {
+    this[`${file}Editor`].setValue(this.store.get(`data.${file}`))
+  }
 }
 
 // initialize editor and attach it to the dom
@@ -22,10 +29,9 @@ Editor.prototype._init = function() {
 
   monaco.editor.defineTheme('solarized', solarized)
 
-  for(let editor of this.data) {
-    this[`${editor}Editor`] = monaco.editor.create(document.getElementById(editor), options)
-    this[`${editor}Editor`].setValue(this.data[editor])
-    monaco.editor.setModelLanguage(this[`${editor}Editor`].getModel(), editor)
+  for(let file of this.files) {
+    this[`${file}Editor`] = monaco.editor.create(document.getElementById(file), options)
+    monaco.editor.setModelLanguage(this[`${file}Editor`].getModel(), file)
   }
 }
 
@@ -39,7 +45,7 @@ Editor.prototype._build = function() {
   let monaco = document.createElement("DIV")
   monaco.setAttribute("id", "monaco-editor")
 
-  for(let tab of this.data) {
+  for(let tab of this.files) {
     let editorTab = document.createElement("DIV")
     editorTab.classList.add("tab")
     editorTab.setAttribute("name", tab)

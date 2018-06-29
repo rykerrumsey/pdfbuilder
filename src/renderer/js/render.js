@@ -1,7 +1,7 @@
 import path from 'path'
 import puppeteer from 'puppeteer'
 
-export default async function render(html, config) {
+export async function render(html, config) {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport(config.viewport)
@@ -11,4 +11,6 @@ export default async function render(html, config) {
     let pdf = await page.pdf(config.pdf);
 
     await browser.close();
+
+    document.getElementById('pdfview').src += ""
 }

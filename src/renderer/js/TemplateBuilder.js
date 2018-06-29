@@ -3,8 +3,9 @@ import path from 'path'
 import sass from 'sass'
 import handlebars from 'handlebars'
 
-export default function TemplateBuilder(path) {
+export default function TemplateBuilder(path, name) {
   this.path = path
+  this.name = name
 
   this._init()
 }
@@ -20,7 +21,7 @@ TemplateBuilder.prototype._init = function() {
 
     // after reading the files combine them into a pre-template string
     this._combine()
-
+    this._createTemplate()
   } catch (error) {
     console.error(error)
   }
@@ -34,7 +35,7 @@ TemplateBuilder.prototype._combine = function() {
   this.combined = master({css: css, html: this.html})
 }
 
-TemplateBuilder.prototype.createTemplate = function() {
+TemplateBuilder.prototype._createTemplate = function() {
   let writePath = path.join(this.path, `template.html`)
   try {
     fs.writeFileSync(writePath, this.combined, 'utf-8')
@@ -44,11 +45,10 @@ TemplateBuilder.prototype.createTemplate = function() {
   }
 }
 
-TemplateBuilder.prototype.compile = function() {
+TemplateBuilder.prototype.compile = function(json) {
   // setup helpers
-
   let template = handlebars.compile(this.combined)
-  return template(JSON.parse(this.json))
+  return template(JSON.parse(json))
 }
 
 const baseHtml =
