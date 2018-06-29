@@ -3,16 +3,15 @@ import path from 'path'
 import sass from 'sass'
 import handlebars from 'handlebars'
 
-export default function TemplateBuilder(name, documentPath) {
-  this.name = name
-  this.path = path.join(documentPath, name)
+export default function TemplateBuilder(path) {
+  this.path = path
 
   this._init()
 }
 
 TemplateBuilder.prototype._init = function() {
   try {
-    let files = ["html", "css", "json"]
+    let files = ["html", "css", "json", "helpers"]
 
     for(const file of files) {
       let filePath = path.join(this.path, `${this.name}.${file}`)
@@ -49,10 +48,7 @@ TemplateBuilder.prototype.compile = function() {
   // setup helpers
 
   let template = handlebars.compile(this.combined)
-  let compiledTemplate = template(JSON.parse(this.json))
-
-  // output full html
-  return compiledTemplate
+  return template(JSON.parse(this.json))
 }
 
 const baseHtml =
@@ -69,5 +65,3 @@ const baseHtml =
     {{{html}}}
   </body>
 </html>`
-
-// document.getElementById('iframeid').src += '';
