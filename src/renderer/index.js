@@ -27,6 +27,7 @@ if (!store.has("data")) {
 }
 
 let editor = new Editor(store)
+//let modal = new Modal(editor, files)
 let ui = new Ui()
 
 editor.update()
@@ -35,23 +36,32 @@ viewer.refresh()
 document.getElementById("save-button").addEventListener("click", (event) => {
   editor.save()
   files.save()
-  viewer.refresh()
 })
-//
-// document.getElementById("load-button").addEventListener("onclick", (event) => {
-//   //display open dialog window to get pathName
-//   files.load(pathName)
-//   editor.update()
-//   viewer.refresh()
-// }
-//
-// document.getElementById("create-button").addEventListener("onclick", (event) => {
-//   files.create(name)
-//   files.seed()
-//   editor.update()
-//   viewer.refresh()
-// }
 
-// document.getElementById("settings-button").addEventListener("onclick", (event) => {
+document.getElementById("create-button").addEventListener("click", (event) => {
+  let input = document.getElementById("createInput")
+
+  let name = input.value
+  input.value = ""
+
+  files.create(name)
+  files.seed(name)
+  editor.update()
+
+  event.currentTarget.parentElement.parentElement.style.visibility = 'hidden'
+  document.getElementById("menu").classList.remove("alternate-menu")
+})
+
+document.getElementById("load-button").addEventListener("click", (event) => {
+  //display open dialog window to get pathName
+  // files.load(pathName)
+  // editor.update()
+  // viewer.refresh()
+
+  event.currentTarget.parentElement.parentElement.style.visibility = 'hidden'
+  document.getElementById("menu").classList.remove("alternate-menu")
+})
+
+// document.getElementById("settings-button").addEventListener("click", (event) => {
 //
 // }

@@ -13,6 +13,9 @@ Ui.prototype._init = function () {
 
   document.getElementById('app').append(this._build(), modal())
   document.getElementById('editor').append(saveBtn)
+
+  let container = document.getElementById("modal")
+  container.append(create(), load(), settings())
 }
 
 Ui.prototype._build = function () {
@@ -54,9 +57,6 @@ Ui.prototype._build = function () {
 }
 
 function displayModal(event) {
-  let modal = document.getElementById("modal")
-  modal.style.visibility = "visible"
-
   let selected = event.target.getAttribute("id")
 
   let buttons = document.querySelectorAll(".button")
@@ -69,19 +69,27 @@ function displayModal(event) {
   let menu = document.getElementById("menu")
   menu.classList.add("alternate-menu")
 
-  modal.innerHTML = ""
+  let modal;
+
+  // hide all the modals
+  let modals = document.querySelectorAll(".modal")
+  modals.forEach((modal) => {
+    modal.style.visibility = "hidden"
+  })
 
   switch(selected) {
     case 'create':
-      modal.append(create())
+      modal = document.getElementById("create-modal")
       break
     case 'load':
-      modal.append(load())
+      modal = document.getElementById("load-modal")
       break
     case 'settings':
-      modal.append(settings())
+      modal = document.getElementById("settings-modal")
       break
     default:
       console.log("There is no modal for that option!")
   }
+
+  modal.style.visibility = "visible"
 }

@@ -1,19 +1,28 @@
 export function create() {
-  let createModal = baseModal("create new")
+  let createModal = baseModal("create new", "create-modal")
   let content = createModal.querySelector(".content")
+
+  let nameInput = document.createElement("INPUT")
+  nameInput.setAttribute("id", "createInput")
+  nameInput.type = "text"
+  nameInput.placeholder = "Enter project name..."
+  nameInput.name = "createName"
+
+  let createInput = document.createElement("DIV")
+  createInput.append(nameInput)
 
   let createBtn = document.createElement("DIV")
   createBtn.setAttribute("id", "create-button")
   createBtn.classList.add("action-button")
-  createBtn.textContent = "Load"
+  createBtn.textContent = "Create"
 
-  content.append(createBtn)
+  content.append(createInput, createBtn)
 
   return createModal
 }
 
 export function load() {
-  let loadModal = baseModal("load")
+  let loadModal = baseModal("load", "load-modal")
   let content = loadModal.querySelector(".content")
 
   let loadBtn = document.createElement("DIV")
@@ -27,7 +36,7 @@ export function load() {
 }
 
 export function settings() {
-  let settingsModal = baseModal("settings")
+  let settingsModal = baseModal("settings", "settings-modal")
   let content = settingsModal.querySelector(".content")
 
   return settingsModal
@@ -40,9 +49,10 @@ export function modal() {
   return modal
 }
 
-function baseModal(title) {
+function baseModal(title, id) {
   let modal = document.createElement("DIV")
   modal.classList.add("modal")
+  modal.setAttribute("id", id)
 
   let close = document.createElement("DIV")
   close.classList.add("close", "close-thin")
@@ -62,6 +72,6 @@ function baseModal(title) {
 }
 
 function closeModal(event) {
-  document.getElementById("modal").style.visibility = "hidden"
+  event.currentTarget.parentElement.style.visibility = "hidden"
   document.getElementById("menu").classList.remove("alternate-menu")
 }

@@ -10,7 +10,6 @@ export default function Files(store) {
 }
 
 Files.prototype.save = async function () {
-  this.create()
   let keys = Object.keys(this.store.get("data"))
   let outputPath = path.join(this.documentPath, this.store.get("name"))
 
@@ -41,8 +40,8 @@ Files.prototype.load = async function (projectPath) {
   }
 }
 
-Files.prototype.create = function () {
-  let templatePath = path.join(this.documentPath, `${this.store.get("name")}`)
+Files.prototype.create = function (name = 'init') {
+  let templatePath = path.join(this.documentPath, name)
 
   // create directory for template if they don't exist
   try {
@@ -58,8 +57,8 @@ Files.prototype.create = function () {
   }
 }
 
-Files.prototype.seed = function () {
-  this.store.set("name", "init")
+Files.prototype.seed = function (name = "init") {
+  this.store.set("name", name)
   this.store.set("data.html", html)
   this.store.set("data.css", css)
   this.store.set("data.json", json)
