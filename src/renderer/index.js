@@ -3,13 +3,13 @@ import './css/styles.scss'
 import Store from 'electron-store'
 import path from 'path'
 import fs from 'fs'
-import { createProxyForMainProcessModule } from 'electron-remote'
 
 import Ui from './js/Ui'
 import Editor from './js/Editor'
 import Viewer from './js/Viewer'
 import Files from './js/Files'
 
+const { dialog } = require('electron').remote
 const store = new Store()
 
 // get the paths for saving and configuring templates
@@ -27,7 +27,6 @@ if (!store.has("data")) {
 }
 
 let editor = new Editor(store)
-//let modal = new Modal(editor, files)
 let ui = new Ui()
 
 editor.update()
@@ -54,9 +53,15 @@ document.getElementById("create-button").addEventListener("click", (event) => {
 
 document.getElementById("load-button").addEventListener("click", (event) => {
   //display open dialog window to get pathName
-  // files.load(pathName)
-  // editor.update()
-  // viewer.refresh()
+  let path = dialog.showOpenDialog({
+    title: "Open Project",
+    defaultPath: store.get("documentPath"),
+    properties: ['openDirectory']
+  })
+
+  files.load(path[0])
+    .then(() => editor.update())
+    .then(() => files.save())
 
   event.currentTarget.parentElement.parentElement.style.visibility = 'hidden'
   document.getElementById("menu").classList.remove("alternate-menu")

@@ -17,6 +17,7 @@ Editor.prototype.save = function() {
 }
 
 Editor.prototype.update = function() {
+  console.log("Editor was updated.")
   // update editors from store
   for (const file of this.files) {
     this[`${file}Editor`].setValue(this.store.get(`data.${file}`))

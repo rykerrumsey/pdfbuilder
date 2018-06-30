@@ -34,10 +34,19 @@ Files.prototype.save = async function () {
 }
 
 Files.prototype.load = async function (projectPath) {
-  for (let editor of this.data) {
-    let editorPath = path.join(projectPath, `${this.name}.${editor}`)
-    this.store.set(`data.${editor}`, await fs.readFile(editorPath))
-  }
+  return new Promise(async (resolve) => {
+    let keys = Object.keys(this.store.get("data"))
+    let temp = projectPath.split("/").reverse()
+    this.store.set("name", temp[0])
+
+    for (let editor of keys) {
+      let editorPath = path.join(projectPath, `${this.store.get("name")}.${editor}`)
+      let file = await fs.readFile(editorPath, 'utf8')
+      this.store.set(`data.${editor}`, file)
+    }
+    console.log("file was loaded")
+    resolve()
+  })
 }
 
 Files.prototype.create = function (name = 'init') {

@@ -1,5 +1,7 @@
 'use strict'
 
+export const loadDialog = require('./loadDialog');
+
 import { app, BrowserWindow } from 'electron'
 import * as path from 'path'
 import { format as formatUrl } from 'url'
