@@ -1,10 +1,10 @@
 'use strict'
 
-export const loadDialog = require('./loadDialog');
-
 import { app, BrowserWindow } from 'electron'
 import * as path from 'path'
 import { format as formatUrl } from 'url'
+
+require('electron-debug')();
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
@@ -18,13 +18,15 @@ function createMainWindow() {
     autoHideMenuBar: true,
     webPreferences: {
       plugins: true,
-      webSecurity: false
+      webSecurity: true // was false
     }
   })
 
   // maximize window on start
   window.maximize()
 
+  // window.webContents.openDevTools()
+  
   if (isDevelopment) {
     window.webContents.openDevTools()
   }
@@ -34,7 +36,7 @@ function createMainWindow() {
   }
   else {
     window.loadURL(formatUrl({
-      pathname: path.join(__dirname, 'main.html'),
+      pathname: path.join(__dirname, 'index.html'),
       protocol: 'file',
       slashes: true
     }))

@@ -17,3 +17,4 @@ yarn dist
 ## TODO list
 
 * finish implementing editor color theme
+* template settings tab need to be made

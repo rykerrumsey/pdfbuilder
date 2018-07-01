@@ -19,7 +19,7 @@ let documentPath = app.getPath("documents")
 store.set("documentPath", path.join(documentPath, "pdfbuilder"))
 store.set("storePath", app.getPath("userData"))
 
-let viewer = new Viewer()
+let viewer = new Viewer(store.get("storePath"))
 let files = new Files(store)
 
 if (!store.has("data")) {

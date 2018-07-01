@@ -30,21 +30,22 @@ Files.prototype.save = async function () {
   let templateBuilder = new TemplateBuilder(outputPath, this.store.get("name"))
   let config = JSON.parse(this.store.get("page"))
   let pdf = templateBuilder.compile(this.store.get("data.json"))
-  render(pdf, config)
+
+  render(pdf, config, this.store.get("storePath"))
 }
 
-Files.prototype.load = async function (projectPath) {
-  return new Promise(async (resolve) => {
+Files.prototype.load = function (projectPath) {
+  return new Promise((resolve) => {
     let keys = Object.keys(this.store.get("data"))
     let temp = projectPath.split("/").reverse()
     this.store.set("name", temp[0])
 
     for (let editor of keys) {
-      let editorPath = path.join(projectPath, `${this.store.get("name")}.${editor}`)
-      let file = await fs.readFile(editorPath, 'utf8')
+      let filePath = path.join(projectPath, `${this.store.get("name")}.${editor}`)
+      let file = fs.readFileSync(filePath, 'utf8')
       this.store.set(`data.${editor}`, file)
     }
-    console.log("file was loaded")
+
     resolve()
   })
 }

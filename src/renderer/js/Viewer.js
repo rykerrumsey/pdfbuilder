@@ -1,7 +1,8 @@
 import path from 'path'
 import url from 'url'
 
-export default function Viewer() {
+export default function Viewer(appPath) {
+  this.appPath = appPath
   this._init()
 }
 
@@ -12,7 +13,7 @@ Viewer.prototype._init = function () {
   let tempFileUrl = url.format({
     protocol: "file",
     slashes: true,
-    pathname: path.join(__static, '/render.pdf')
+    pathname: path.join(this.appPath, '/render.pdf')
   })
 
   viewer.innerHTML = `<webview id=\"pdfview\" src=\"${tempFileUrl}\" plugins></webview>`
