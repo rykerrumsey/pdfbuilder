@@ -2,6 +2,7 @@
 
 import { app, BrowserWindow } from 'electron'
 import * as path from 'path'
+import _ from 'lodash'
 import { format as formatUrl } from 'url'
 
 require('electron-debug')();
@@ -25,8 +26,8 @@ function createMainWindow() {
   // maximize window on start
   window.maximize()
 
-  // window.webContents.openDevTools()
-  
+  window.webContents.openDevTools()
+
   if (isDevelopment) {
     window.webContents.openDevTools()
   }
@@ -52,6 +53,10 @@ function createMainWindow() {
       window.focus()
     })
   })
+
+  window.on('resize', _.debounce(function () {
+     mainWindow.reload()
+   }, 100));
 
   return window
 }
